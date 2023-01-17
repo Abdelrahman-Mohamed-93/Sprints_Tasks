@@ -1,0 +1,2 @@
+12- Logs are the automatically produced and time-stamped documentation of events relevant to a particular system. They contain information about usage patterns, activities, and operations within an operating system, application, server or another device. 
+USAGE: Logs show whether resources are performing properly and optimally.

@@ -1,0 +1,1 @@
+16- All the PODs are READY, because I added "tty= true" item in the container's specs. Otherwise all of them would have exited after creation.

@@ -1,0 +1,2 @@
+8- kubectl describe nodes nodename(node01)
+check Non-terminated Pods section and "webserver" POD is to be found under it

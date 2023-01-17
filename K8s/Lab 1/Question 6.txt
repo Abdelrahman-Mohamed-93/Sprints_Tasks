@@ -1,0 +1,1 @@
+6- The READY column indicates the readiness of containers in each pod
