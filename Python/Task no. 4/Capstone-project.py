@@ -7,7 +7,6 @@ import pandas as pd
 from datetime import date
 from os import path
 
-
 #Main function to let the user choose what to do
 def main_function():
     options = input(
@@ -29,7 +28,6 @@ def main_function():
         print("please enter on of the options ")
     print("*" * 20)
     main_function()
-
 
 # This function to enter a record after checking it
 def new_entry():
@@ -87,7 +85,6 @@ def update():
         df.to_csv(SelectedFile, index=False)
     print("The file is updated")
 
-
 # This Function is to delete a customer-specified-record using its name
 def delete():
     SelectedFile = input("please enter the file name you want to delete from \n")
@@ -105,7 +102,6 @@ def delete():
             return 1
     print("Not founded")
 
-
 # This Function is to view a specified file
 def view_file():
     SelectedFile = input("please enter the file name to view \n")
@@ -116,7 +112,6 @@ def view_file():
         csvreader = csv.reader(file)
         for row in csvreader:
             print(row)
-
 
 # This Function copy all files in a folder and archive it ,then uploaded the archive file to s3 bucket
 def aws_backup():
@@ -132,8 +127,6 @@ def aws_backup():
     object_name = "aws_backup_zip"
     file_name = os.path.join(pathlib.Path(__file__).parent.resolve(), "aws_backup_zip")
     response = s3.upload_file(file_name, bucket_name, object_name)
-
-
 
 # This Function create today file if not exist , append if exist then save the argument data in it
 def save_record(data):
