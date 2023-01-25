@@ -1,0 +1,1 @@
+12- We did not assign the environment variable "MYSQL_ROOT_PASSWORD"
