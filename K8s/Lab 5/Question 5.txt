@@ -1,0 +1,7 @@
+Both manage Pods that are based on an identical container spec.
+Differences:
+ - A StatefulSet:
+	- provides guarantees about the ordering and uniqueness of these Pods (each pod has a unique identity & a unique pvc).
+	- is better suited to stateful workloads that require persistent storage on each cluster node, such as databases and other identity-sensitive workloads. 
+ - A Deployment:
+	- is suitable for stateless workloads that use multiple replicas of one pod, such as web servers like Nginx and Apache.
