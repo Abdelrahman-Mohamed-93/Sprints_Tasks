@@ -1,0 +1,11 @@
+1) Jenkins pipelines:
+	- a suite of plugins which supports implementing and integrating the process for getting software from version control right through to your users and customers.
+		* They automate testing and reporting on isolated changes in a larger code base in real time and facilitates the integration of disparate branches of the code into a main branch. 
+		* They also rapidly detect defects in a code base, build the software, automate test of their builds, prepare the code base for deployment (delivery), and ultimately deploy code to containers and virtual machines, as well as bare metal and cloud servers
+
+
+2) Groovy
+
+3) U can either:
+	- Use the pipeline script to write ur script directly into the pipeline
+	- Use the pipeline script from Source Code Manager (Github for example) and provide the pipeline with the repository URL along side with the credentials to access it (in case it is private) and specify which file contains ur script

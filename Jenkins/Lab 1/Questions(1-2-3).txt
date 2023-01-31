@@ -1,0 +1,21 @@
+1) 
+- It is used to implement CI/CD workflows, called pipelines:
+	 * that automate testing and reporting on isolated changes in a larger code base in real time and facilitates the integration of disparate branches of the code into a main branch. 
+	 * they also rapidly detect defects in a code base, build the software, automate test of their builds, prepare the code base for deployment (delivery), and ultimately deploy code to containers and virtual machines, as well as bare metal and cloud servers.
+- Its usage can also be summarized as:
+	Run tests 
+	Build artifacts 
+	Publish artifacts 
+	Deploy artifacts
+	Send notifications
+ 
+2) 
+- An agent(slave) is typically a machine, or container, which connects to a Jenkins controller(master) and executes tasks when directed by the controller.
+- A Jenkins executor is one of the basic building blocks which allow a build to run on a node/agent (e.g. build server).
+
+3)
+- Jenkins master server (also known as controller) is the node/server that holds all key configurations and orchestrates all the workflow  defined in the pipelines.
+- Jenkins slave/s (also known as agent/s) are the worker node/s that actually execute all the steps mentioned in a job as instructed by the contoller/master server.
+- When creating a jenkins job an agent has to be assigned to it. 
+- Port 50000 has to be open on both the master and the slave/s to be able to communicate with each other
+
