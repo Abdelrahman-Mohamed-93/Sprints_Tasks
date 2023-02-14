@@ -1,0 +1,16 @@
+1- * Manually
+   * Build periodically in pipeline
+   * Webhook
+   * Jenkins scan
+   * Trigger build remotely
+   * Build after other project is built 
+   * Triggering a pipeline as a stage in another pipeline
+
+2- * Running hundreds of jobs on different platforms/OS
+   * Not affecting the master performance by running jobs
+   * Availability
+
+3- Authentication: verifies the identity of a user or service
+   Authorization: determines their access rights
+
+4- It is used to scan the organization's Github account periodically, so that in case of new commits (that haven't been signaled by webhook for any reason), it can trigger builds for such commits on the defined branches

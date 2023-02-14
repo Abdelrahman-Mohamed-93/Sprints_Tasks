@@ -1,0 +1,6 @@
+---
+- hosts: Nexus
+  remote_user: ec2-user
+  become: yes
+  roles:
+    - Sonatype-nexus-3

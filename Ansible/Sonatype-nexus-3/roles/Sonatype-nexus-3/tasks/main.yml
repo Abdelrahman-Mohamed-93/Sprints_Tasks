@@ -1,0 +1,87 @@
+---
+- name: Upgrade all packages
+  yum:
+    update_cache: true
+    name: '*'
+    state: latest
+
+- name: yum install wget
+  yum:
+    name: wget
+    state: latest
+
+- name: Install java version
+  yum:
+    name: java-1.8.0-openjdk.x86_64
+    state: present
+
+- name: Create directory
+  file:
+    path: "{{ dir_name }}"
+    state: directory
+
+- name: Download latest nexus
+  get_url:
+    url: https://download.sonatype.com/nexus/3/latest-unix.tar.gz
+    dest: "{{ dir_name }}/nexus.tar.gz"
+
+- name: Unarchive the downloaded latest nexus file
+  unarchive:
+    src: "{{ dir_name }}/nexus.tar.gz"
+    dest: "{{ dir_name }}/"
+    remote_src: yes
+
+- name: Checks if the unarchived file exists
+  stat: 
+    path: "{{ dir_name }}/nexus-3.47.1-01"
+  register: unarchived_stat
+
+- name: Making sure that the path search is returning 'true'
+  debug:
+    var: unarchived_stat.stat.exists
+
+- name: Rename the unarchived file if it exists
+  command: mv "{{ dir_name }}/nexus-3.47.1-01" "{{ dir_name }}/nexus"
+  when: unarchived_stat.stat.exists
+
+- name: Add the user 'nexus'
+  user:
+    name: nexus
+
+- name: Change the nexus files ownership & group
+  file:
+    path: "{{ dir_name }}/nexus"
+    recurse: true
+    owner: nexus
+    group: nexus
+
+- name: Change the sonatype-work(nexus data dir) ownership & group
+  file:
+    path: "{{ dir_name }}/sonatype-work"
+    recurse: true
+    owner: nexus
+    group: nexus
+
+- name: Adding the run_as_user parameter
+  lineinfile:
+    path: "{{ dir_name }}/nexus/bin/nexus.rc"
+    regexp: '^#run_as_user=""'
+    line: 'run_as_user="nexus"'
+    state: present
+
+- name: Copy nexus.service file into remote server
+  copy:
+    src: nexus.service
+    dest: /etc/systemd/system/nexus.service
+
+- name: Add a SELinux policy to allow Systemd to access the nexus binary in path /app/nexus/bin/nexus
+  command: chcon -R -t bin_t /app/nexus/bin/nexus
+
+- name: Make sure nexus service unit is running
+  systemd:
+    name: nexus
+    enabled: true
+    state: started  
+
+
+
