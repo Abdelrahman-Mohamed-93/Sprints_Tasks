@@ -1,0 +1,13 @@
+1) Different http status codes:
+     1XX — informational codes
+     2XX — successful codes 
+     3XX — redirection codes
+     4XX — client error codes 
+     5XX — server error codes 
+
+2) Database used by prometheus: Time-series database
+
+3) Metrics types:
+      Counter: How many times did it happen (Can only go up)
+      Gauge: The current value/state for the metrics (Can go up or down)
+      Histogram: For how long did the event happen
