@@ -1,0 +1,24 @@
+1) To trigger prometheus alert, u need to define the causes for an alert in the rules.yml file.
+   The full guide:
+	- Setup and configure AlertManager (Define alert mechanism in AlertManager e.g: to send alerts via Slack).
+	- Configure the config file on Prometheus so it can talk to the AlertManager.
+	- Define and enable alert rules in Prometheus server configuration.
+
+2) Node exporter: Collects metrics to monitor the server itself
+   Mysql exporter: Collects metrics to monitor the database on the server and not the server itself
+
+3) By default the retention is configured to 15 days.
+   To increase the retention period:
+	- Open the prometheus.service file --> vi /etc/systemd/system/prometheus.service
+	- add "--storage.tsdb.retention.time=desired_period" below to "ExecStart=/usr/local/bin/prometheus" line.
+
+4) PromQL uses three data types: scalars, range vectors, and instant vectors.
+
+5) rate(desired_histogram_sum[5m]) / rate(desired_histogram_count[5m])
+
+6) Thanos is an open-source extension to Prometheus. By adding Thanos to Prometheus, users can build highly available metric systems with practically unlimited storage. When deployed, Thanos provides features such as a global query view, high accessibility (HA), and affordable access to historical data in a single binary.
+
+7) Promtool is a tooling for Prometheus monitoring system that can be used to check that a config/rules file is valid
+   Usage: ./promtool test rules "path_of_the_file_to_be_teste"
+
+9) Yes. We can set up comparisons of CPU in one dashboard.
